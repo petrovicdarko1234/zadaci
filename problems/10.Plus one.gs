@@ -5,8 +5,7 @@ function plusOne(digits: number[]): number[] {
         if (digits[i] < 9) {
             digits[i] += 1
             return digits
-        }
-        else {
+        } else {
             digits[i] = 0
         }
     }
