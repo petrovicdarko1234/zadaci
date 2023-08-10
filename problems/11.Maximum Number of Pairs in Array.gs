@@ -1,11 +1,11 @@
 function numberOfPairs(nums: number[]): number[] {
-    let count = 0
-    let ostatak = 0
+
+    let pairCnt = 0
 
     for (let i = 0; i < nums.length - 1; i++) {
         for (let j = i + 1; j < nums.length; j++) {
             if (nums[i] == nums[j] && nums[i] != -1) {
-                count++
+                pairCnt++
                 nums[i] = -1
                 nums[j] = -1
 
@@ -13,13 +13,9 @@ function numberOfPairs(nums: number[]): number[] {
         }
     }
 
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] != -1) {
-            ostatak++
-        }
-    }
+    let ostatak = nums.length - (pairCnt * 2)
 
-    return [count, ostatak]
+    return [pairCnt, ostatak]
 
 };
 
