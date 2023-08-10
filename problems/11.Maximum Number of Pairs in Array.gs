@@ -13,9 +13,8 @@ function numberOfPairs(nums: number[]): number[] {
         }
     }
 
-    let ostatak = nums.length - (pairCnt * 2)
 
-    return [pairCnt, ostatak]
+    return [pairCnt,[nums.length - pairCnt * 2]]
 
 };
 
