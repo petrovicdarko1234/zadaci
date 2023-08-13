@@ -2,7 +2,6 @@ function generate(numRows: number): number[][] {
 
     let matrix: number[][] = []
 
-
     for (let i = 0; i < numRows; i++) {
         matrix[i] = []
         for (let j = 0; j < i + 1; j++) {
@@ -18,7 +17,6 @@ function generate(numRows: number): number[][] {
     }
     return matrix
 };
-
 
 function printMatrix(matrix: number[][]): string {
     let str: string = ""
