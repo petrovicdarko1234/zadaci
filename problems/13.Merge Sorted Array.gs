@@ -3,33 +3,24 @@
  */
 function merge(nums1: number[], m: number, nums2: number[], n: number): void {
 
-    for (let i = 0; i < n; i++) {
-        nums1[m + i] = nums2[i]
+    let l1 = m - 1
+    let l2 = n - 1
+    let k = nums1.length - 1
+
+    while (l2 >= 0) {
+        if (nums1[l1] > nums2[l2]) {
+            nums1[k] = nums1[l1]
+            l1--
+        } else {
+            nums1[k] = nums2[l2]
+            l2--
+        }
+        k--
     }
-
-
-    sortiraj(nums1)
-
 };
 
-function sortiraj(niz: number[]): number[] {
+let testNiz1 = [1, 2, 3, 0, 0, 0]
+let testNiz2 = [2, 5, 6]
 
-    let temp = 0
-
-    for (let i = 0; i < niz.length - 1; i++) {
-        for (let j = i + 1; j < niz.length; j++) {
-            if (niz[i] > niz[j]) {
-                temp = niz[i]
-                niz[i] = niz[j]
-                niz[j] = temp
-            }
-        }
-    }
-    return niz
-}
-
-let testNiz1 = [1]
-let testNiz2 = [0]
-merge(testNiz1, 1, testNiz2, 0,)
+merge(testNiz1, 3, testNiz2, 3)
 console.log(testNiz1)
-
