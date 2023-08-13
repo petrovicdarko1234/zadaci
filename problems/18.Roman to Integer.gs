@@ -12,15 +12,15 @@ function romanToInt(s: string): number {
 
     let sum = 0
     for (let i = 0; i < s.length; i++) {
-        if (i < s.length - 1 && mapGet(fromRoman, s[i]) < mapGet(fromRoman, s[i + 1])) {
-            sum += mapGet(fromRoman, s[i + 1]) - mapGet(fromRoman, s[i])
+        let ele0 = mapGet(fromRoman, s[i])
+        let ele1 = mapGet(fromRoman, s[i + 1])
+        if (i < s.length - 1 && ele0 < ele1) {
+            sum += ele1 - ele0
             i++
         } else {
-            sum += mapGet(fromRoman, s[i])
+            sum += ele0
         }
-
-    };
-    // IXX
+    }
     return sum
 }
 
