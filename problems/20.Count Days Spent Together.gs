@@ -24,10 +24,10 @@ function dayOfYear(month: number, day: number): number {
 }
 function daysStaying(arrival: string, leave: string): number[] {
     let days: number[] = []
-    let monArr: number = extractDays(arrival)[0]
-    let dayArr: number = extractDays(arrival)[1]
-    let monLea: number = extractDays(leave)[0]
-    let dayLea: number = extractDays(leave)[1]
+    let monArr: number = extractMonths(arrival)
+    let dayArr: number = extractDays(arrival)
+    let monLea: number = extractMonths(leave)
+    let dayLea: number = extractDays(leave)
     let arr365 = dayOfYear(monArr, dayArr)
     let leave365 = dayOfYear(monLea, dayLea)
 
@@ -36,13 +36,11 @@ function daysStaying(arrival: string, leave: string): number[] {
     }
     return days
 }
-function extractDays(str: string): number[] {
-    let days: number[] = new Array(2)
-
-    days[0] = parseInt(str.substring(0, 2))
-    days[1] = parseInt(str.substring(3, 5))
-
-    return days
+function extractDays(str: string): number {
+    return parseInt(str.substring(3, 5))
+}
+function extractMonths(str: string): number {
+    return parseInt(str.substring(0, 2))
 }
 
 console.log(countDaysTogether("08-15", "08-18", "08-16", "08-19"))
