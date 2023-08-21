@@ -22,12 +22,10 @@ function distinct(arr: string[]): boolean[] {
 
     for (let i = 0; i < arr.length - 1; i++) {
         if (!visited[i]) {
-
             for (let j = i + 1; j < arr.length; j++) {
                 if (arr[i] == arr[j]) {
                     visited[i] = true
                     visited[j] = true
-
                 }
             }
         }
