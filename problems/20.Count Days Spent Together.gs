@@ -1,20 +1,7 @@
 function countDaysTogether(arriveAlice: string, leaveAlice: string, arriveBob: string, leaveBob: string): number {
 
-    let aliMonArr = parseInt(arriveAlice.substring(0, 2))
-    let allDayArr = parseInt(arriveAlice.substring(3, 5))
-    let aliMonLea = parseInt(leaveAlice.substring(0, 2))
-    let allDayLea = parseInt(leaveAlice.substring(3, 5))
-    let aliArr365: number = dayOfYear(aliMonArr, allDayArr)
-    let aliLea365: number = dayOfYear(aliMonLea, allDayLea)
-    let ali365days: number[] = daysStaying(aliArr365, aliLea365)
-
-    let bobMonArr = parseInt(arriveBob.substring(0, 2))
-    let bobDayArr = parseInt(arriveBob.substring(3, 5))
-    let bobMonLea = parseInt(leaveBob.substring(0, 2))
-    let bobDayLea = parseInt(leaveBob.substring(3, 5))
-    let bobArr365: number = dayOfYear(bobMonArr, bobDayArr)
-    let bobLea365: number = dayOfYear(bobMonLea, bobDayLea)
-    let bob365days: number[] = daysStaying(bobArr365, bobLea365)
+    let ali365days: number[] = daysStaying(arriveAlice, leaveAlice)
+    let bob365days: number[] = daysStaying(arriveBob, leaveBob)
 
     let cnt = 0
     for (let i = 0; i < ali365days.length; i++) {
@@ -35,12 +22,26 @@ function dayOfYear(month: number, day: number): number {
     }
     return days = days + day
 }
-function daysStaying(arrival: number, leave: number): number[] {
+function daysStaying(arrival: string, leave: string): number[] {
     let days: number[] = []
+    let monArr: number = extractDays(arrival)[0]
+    let dayArr: number = extractDays(arrival)[1]
+    let monLea: number = extractDays(leave)[0]
+    let dayLea: number = extractDays(leave)[1]
+    let arr365 = dayOfYear(monArr, dayArr)
+    let leave365 = dayOfYear(monLea, dayLea)
 
-    for (let i = 0; i <= leave - arrival; i++) {
-        days[i] = arrival + i
+    for (let i = 0; i <= leave365 - arr365; i++) {
+        days[i] = arr365 + i
     }
+    return days
+}
+function extractDays(str: string): number[] {
+    let days: number[] = new Array(2)
+
+    days[0] = parseInt(str.substring(0, 2))
+    days[1] = parseInt(str.substring(3, 5))
+
     return days
 }
 
