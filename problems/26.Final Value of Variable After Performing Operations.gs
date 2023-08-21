@@ -3,8 +3,7 @@ function finalValueAfterOperations(operations: string[]): number {
     for (let i = 0; i < operations.length; i++) {
         if (operations[i] == "--X" || operations[i] == "X--") {
             x -= 1
-        }
-        else {
+        }else{
             x += 1
         }
     }
