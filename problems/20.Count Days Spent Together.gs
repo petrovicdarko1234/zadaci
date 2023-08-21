@@ -1,47 +1,47 @@
 function countDaysTogether(arriveAlice: string, leaveAlice: string, arriveBob: string, leaveBob: string): number {
 
-    let Ama = parseInt(arriveAlice.substring(0, 2))
-    let Ada = parseInt(arriveAlice.substring(3, 5))
-    let Aml = parseInt(leaveAlice.substring(0, 2))
-    let Adl = parseInt(leaveAlice.substring(3, 5))
-    let Aaday: number = danUgodini(Ama, Ada)
-    let Alday: number = danUgodini(Aml, Adl)
-    let Adays: number[] = []
+    let aliMonArr = parseInt(arriveAlice.substring(0, 2))
+    let allDayArr = parseInt(arriveAlice.substring(3, 5))
+    let aliMonLea = parseInt(leaveAlice.substring(0, 2))
+    let allDayLea = parseInt(leaveAlice.substring(3, 5))
+    let aliArr365: number = dayOfYear(aliMonArr, allDayArr)
+    let aliLea365: number = dayOfYear(aliMonLea, allDayLea)
+    let ali365days: number[] = daysStaying(aliArr365, aliLea365)
 
-    for (let i = 0; i <= Alday - Aaday; i++) {
-        Adays[i] = Aaday + i
-    }
-
-    let Bma = parseInt(arriveBob.substring(0, 2))
-    let Bda = parseInt(arriveBob.substring(3, 5))
-    let Bml = parseInt(leaveBob.substring(0, 2))
-    let Bdl = parseInt(leaveBob.substring(3, 5))
-    let Baday: number = danUgodini(Bma, Bda)
-    let Blday: number = danUgodini(Bml, Bdl)
-    let Bdays: number[] = []
-    console.log(Baday, Blday)
-    for (let i = 0; i <= Blday - Baday; i++) {
-        Bdays[i] = Baday + i
-    }
+    let bobMonArr = parseInt(arriveBob.substring(0, 2))
+    let bobDayArr = parseInt(arriveBob.substring(3, 5))
+    let bobMonLea = parseInt(leaveBob.substring(0, 2))
+    let bobDayLea = parseInt(leaveBob.substring(3, 5))
+    let bobArr365: number = dayOfYear(bobMonArr, bobDayArr)
+    let bobLea365: number = dayOfYear(bobMonLea, bobDayLea)
+    let bob365days: number[] = daysStaying(bobArr365, bobLea365)
 
     let cnt = 0
-    for (let i = 0; i < Adays.length; i++) {
-        for (let j = 0; j < Bdays.length; j++) {
-            if (Adays[i] == Bdays[j]) {
+    for (let i = 0; i < ali365days.length; i++) {
+        for (let j = 0; j < bob365days.length; j++) {
+            if (ali365days[i] == bob365days[j]) {
                 cnt++
             }
         }
     }
     return cnt
 };
-function danUgodini(mesec: number, dan: number): number {
+function dayOfYear(month: number, day: number): number {
     let months: number[] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    let dani = 0
+    let days = 0
 
-    for (let i = 0; i < mesec - 1; i++) {
-        dani += months[i]
+    for (let i = 0; i < month - 1; i++) {
+        days += months[i]
     }
-    return dani = dani + dan
+    return days = days + day
+}
+function daysStaying(arrival: number, leave: number): number[] {
+    let days: number[] = []
+
+    for (let i = 0; i <= leave - arrival; i++) {
+        days[i] = arrival + i
+    }
+    return days
 }
 
 console.log(countDaysTogether("08-15", "08-18", "08-16", "08-19"))
