@@ -66,7 +66,6 @@ function appendNewElem(head: ListNode, val: number) {
         cur = cur.next
     }
     cur.next = new ListNode(val)
-
 }
 
 function printList(head: ListNode) {
