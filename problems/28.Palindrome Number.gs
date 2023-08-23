@@ -1,30 +1,34 @@
 function isPalindrome(x: number): boolean {
+
     if (x < 0) {
         return false
     }
 
-    let niz = uNiz(x)
+    let arr: number[] = numToArr(x)
     let i = 0
-    let j = niz.length - 1
+    let j = arr.length - 1
 
     while (i != j && j > i) {
-        if (niz[i] != niz[j]) {
+        if (arr[i] != arr[j]) {
             return false
         }
         i++
         j--
     }
+
     return true
 };
-function uNiz(x: number): number[] {
-    let str: string = x.toString()
-    let niz: number[] = new Array(str.length)
+ function numToArr(x: number): number[] {
+    let arr: number[] = []
+    let num: number = x
+    let k = 0
 
-    for (let i = 0; i < str.length; i++) {
-        let temp = parseInt(str[i])
-        niz[i] = temp
+    while (num != 0) {
+        arr[k] = num % 10
+        num = Math.round(num / 10)
+        k++
     }
-    return niz
+    return arr
 }
 
 let testBroj = 11
