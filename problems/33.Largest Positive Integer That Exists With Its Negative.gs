@@ -3,7 +3,7 @@ function findMaxK(nums: number[]): number {
     for (let i = 0; i < nums.length; i++) {
         let max = maxNum(nums)
         for (let j = 0; j < nums.length; j++) {
-            if (max == (nums[j] * (-1)) && max != 0) {
+            if (-1 * max == nums[j]) {
                 return max
             }
         }
@@ -21,10 +21,9 @@ function maxNum(nums: number[]): number {
             maxIndex = i
         }
     }
-    nums[maxIndex] = 0
     return max
 }
 
-let testNiz = [-1, 2, 4, 3]
+let testNiz = [-1, 2, -3, 3]
 
 console.log(findMaxK(testNiz))
