@@ -1,33 +1,15 @@
 function isSubsequence(s: string, t: string): boolean {
+    let j = 0
 
-    let subS: string[] = s.split("")
-    let str: string[] = t.split("")
-    let sumOfI: number[] = []
-    let k = 0
-
-    for (let i = 0; i < subS.length; i++) {
-        for (let j = 0; j < str.length; j++) {
-            if (subS[i] == str[j]) {
-                if (i > j) {
-                    continue
-                }
-                sumOfI[k] = i + j
-                k++
-                str[j] = "0"
-                break
-            }
+    for (let i = 0; i < t.length; i++) {
+        if (t[i] == s[j]) {
+            j++
         }
     }
-
-    if (sumOfI.length != subS.length) {
-        return false
+    if (j == s.length) {
+        return true
     }
-    for (let i = 0; i < sumOfI.length - 1; i++) {
-        if (sumOfI[i] >= sumOfI[i + 1]) {
-            return false
-        }
-    }
-    return true
+    return false
 };
 let testStr1 = "ab"
 let testStr2 = "baab"
