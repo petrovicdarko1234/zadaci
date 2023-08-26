@@ -1,17 +1,14 @@
 function isSubsequence(s: string, t: string): boolean {
     let j = 0
 
-    for (let i = 0; i < t.length; i++) {
+    for (let i = 0; i < t.length && j < s.length; i++) {
         if (t[i] == s[j]) {
             j++
         }
     }
-    if (j == s.length) {
-        return true
-    }
-    return false
+    return j == s.length
 };
 let testStr1 = "ab"
-let testStr2 = "baab"
+let testStr2 = "abbbbbbb"
 
 console.log(isSubsequence(testStr1, testStr2))
