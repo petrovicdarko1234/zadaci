@@ -1,5 +1,3 @@
-
-
 class ListNode {
     val: number
     next: ListNode | null
@@ -9,12 +7,11 @@ class ListNode {
     }
 }
 
-
 function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
-    if (!list1) {
+    if (list1 == null) {
         return list2
     }
-    if (!list2) {
+    if (list2 == null) {
         return list1
     }
 
@@ -22,10 +19,10 @@ function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode
     let cur = tempHead
 
     while (list1 || list2) {
-        if (!list1) {
+        if (list1 == null) {
             cur.next = list2
             break
-        } else if (!list2) {
+        } else if (list2 == null) {
             cur.next = list1
             break
         } else if (list1.val < list2.val) {
