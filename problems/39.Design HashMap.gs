@@ -79,13 +79,12 @@ class MyHashMap {
 
     put(key: number, value: number): void {
         if (this.head != null) {
-            if (this.get(key) == -1) {
-                add(this.head, key, value)
+
+            let node = findNode(this.head, key)
+            if (node != null) {
+                node.val = value
             } else {
-                let node = findNode(this.head, key)
-                if (node !== null) {
-                    node.val = value
-                }
+                add(this.head, key, value)
             }
         } else {
             this.head = new MyNode(key, value, null)
@@ -106,23 +105,24 @@ class MyHashMap {
 let map = new MyHashMap()
 map.put(1, 0)
 console.log(map.get(1))
-map.remove(1)
-console.log(map.get(1))
+// map.remove(1)
+// console.log(map.get(1))
 map.put(2, 1)
 console.log(map.get(2))
-map.remove(2)
+// map.remove(2)
+// console.log(map.get(2))
+map.put(2, 2)
 console.log(map.get(2))
-map.put(4, 3)
-map.put(5, 4)
-map.put(6, 5)
-map.put(7, 6)
-console.log(map.get(3))
-console.log(map.get(4))
-console.log(map.get(5))
-console.log(map.get(6))
-console.log(map.get(7))
-map.put(1, 1)
-console.log(map.get(1))
+// map.put(5, 4)
+// map.put(6, 5)
+// map.put(7, 6)
+// console.log(map.get(3))
+// console.log(map.get(4))
+// console.log(map.get(5))
+// console.log(map.get(6))
+// console.log(map.get(7))
+// map.put(1, 1)
+// console.log(map.get(1))
 
 
 
