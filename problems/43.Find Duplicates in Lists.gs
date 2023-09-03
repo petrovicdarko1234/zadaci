@@ -118,7 +118,6 @@ function findDupsMyHashSet(head: MyNode | null) {
         set.add(head.val)
         head = head.next
     }
-
 }
 //findDupsMyHashSet(head)
 
